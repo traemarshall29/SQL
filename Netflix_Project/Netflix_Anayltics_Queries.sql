@@ -37,5 +37,6 @@ WHERE titles.title = 'The Starling' ;
 SELECT title, release_year
 FROM "netflix_titles_info"
 WHERE type = 'Movie'
-ORDER BY release_year ASC
-LIMIT 1 ;
+AND release_year <= (SELECT MIN(release_year)
+FROM "netflix_titles_info"
+WHERE type = 'Movie') ;
