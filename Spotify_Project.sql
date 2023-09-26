@@ -37,4 +37,13 @@ FROM BIT_DB.spotifydata
 ORDER BY popularity desc
 LIMIT 10 ; 
 
-/**/
+/* Question: Calculate the average popularity for the artists in the Spotify data table. 
+Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star”. */
+WITH popularity_avg_CTE AS (
+    SELECT spot.artist_name, AVG(spot.popularity) AS avg_popularity
+    FROM Spotifydata AS spot
+    GROUP BY spot.artist_name )
+SELECT artist_name, avg_popularity, 'Top Star' AS tag
+FROM popularity_avg_CTE
+WHERE avg_popularity >= 90 ;
+
