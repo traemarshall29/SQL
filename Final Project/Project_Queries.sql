@@ -1,4 +1,4 @@
-/* #1 Show Customers (their full names, customer ID, and country) who are not in the US. (Hint: != or <> can be used to say "is not equal to"). */
+/* #1 Show Customers (their full names, customer ID, and country) who are not in the US. */
 SELECT CustomerId, FirstName, LastName, Country FROM chinook.customers 
 WHERE country <> "USA" ;
 
@@ -29,7 +29,7 @@ FROM chinook.invoices AS inv
     JOIN chinook.employees AS emp
     ON cust.SupportRepId = emp.EmployeeId ;
 
-/* 7 Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.*/
+/* #7 Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.*/
 SELECT cust.FirstName, cust.LastName, emp.FirstName, emp.LastName, cust.Country, inv.total
 FROM chinook.invoices AS inv
     JOIN chinook.customers AS cust
@@ -48,7 +48,6 @@ FROM chinook.invoices
 WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31' ;
 
 /* #10 Write a query that includes the purchased track name with each invoice line ID.*/
-
 SELECT tr.trackID, tr.name, inv.invoicelineid 
 FROM chinook.tracks AS tr
 JOIN chinook.invoice_items AS inv
